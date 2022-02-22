@@ -46,10 +46,14 @@ class PurchasesController < ApplicationController
         if order.valid?
           return render json: { status: :success, order: { id: order.id } }, status: :ok
         else
-          return render json: { errors: order.errors.map(&:full_message).map { |message| { message: message } } }, status: :unprocessable_entity
+          return render json: { errors: order.errors.map(&:full_message).map { |message|
+                                          { message: message }
+                                        } }, status: :unprocessable_entity
         end
       else
-        return render json: { errors: user.errors.map(&:full_message).map { |message| { message: message } } }, status: :unprocessable_entity
+        return render json: { errors: user.errors.map(&:full_message).map { |message|
+                                        { message: message }
+                                      } }, status: :unprocessable_entity
       end
     elsif purchase_params[:gateway] == 'stripe'
       cart_id = purchase_params[:cart_id]
@@ -97,10 +101,14 @@ class PurchasesController < ApplicationController
         if order.valid?
           return render json: { status: :success, order: { id: order.id } }, status: :ok
         else
-          return render json: { errors: order.errors.map(&:full_message).map { |message| { message: message } } }, status: :unprocessable_entity
+          return render json: { errors: order.errors.map(&:full_message).map { |message|
+                                          { message: message }
+                                        } }, status: :unprocessable_entity
         end
       else
-        return render json: { errors: user.errors.map(&:full_message).map { |message| { message: message } } }, status: :unprocessable_entity
+        return render json: { errors: user.errors.map(&:full_message).map { |message|
+                                        { message: message }
+                                      } }, status: :unprocessable_entity
       end
     else
       render json: { errors: [{ message: 'Gateway not supported!' }] }, status: :unprocessable_entity
