@@ -4,6 +4,7 @@ describe ".call" do
   it "should create order with the user and address attributes" do
     user = create(:user)
     address_params = create(:order, user: user)
+
     order = CreateOrder.call(user, address_params)
 
     expect(order.class).to eq(Order)
