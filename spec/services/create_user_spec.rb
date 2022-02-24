@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe ".call" do
-  it "should create user guest" do
+  it "creates user guest" do
     user_params = create(:user, guest: true)
     cart = create(:cart, user: user_params)
 

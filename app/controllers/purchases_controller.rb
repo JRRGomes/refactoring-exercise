@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   def create
-    if any_gateway?
+    if valid_gateway?
       cart_id = purchase_params[:cart_id]
 
       cart = Cart.find_by(id: cart_id)
@@ -41,7 +41,7 @@ private
 
   GATEWAYS = %w[paypal stripe]
 
-  def any_gateway?
+  def valid_gateway?
     GATEWAYS.include? purchase_params[:gateway]
   end
 
