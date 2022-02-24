@@ -1,4 +1,4 @@
-class CreateOrderLineItem
+class OrderLineItemCreator
   def initialize(order, item, shipping_costs)
     @order = order
     @item = item

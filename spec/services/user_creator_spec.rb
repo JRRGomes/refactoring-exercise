@@ -6,7 +6,7 @@ describe ".call" do
       cart = create(:cart, user: nil)
       user_params = { 'email'=>'teste@spec.io', 'first_name'=>'John', 'last_name'=>'Doe'}
 
-      user = CreateUser.call(cart: cart, purchase_params: { user: user_params })
+      user = UserCreator.call(cart: cart, purchase_params: { user: user_params })
 
       expect(user.class).to eq(User)
       expect(user.attributes).to include({ 'email'=>'teste@spec.io',
@@ -22,7 +22,7 @@ describe ".call" do
       cart_user = create(:user)
       cart = create(:cart, user: cart_user)
 
-      user = CreateUser.call(cart: cart, purchase_params: {})
+      user = UserCreator.call(cart: cart, purchase_params: {})
 
       expect(user.class).to eq(User)
       expect(user.attributes).to include(cart_user.attributes)

@@ -7,7 +7,7 @@ describe '.call' do
     item = create(:cart_item, cart: cart)
     shipping_costs = 100
 
-    order_line_item  = CreateOrderLineItem.call(order, item, shipping_costs)
+    order_line_item  = OrderLineItemCreator.call(order, item, shipping_costs)
 
     expect(order_line_item.class).to eq(OrderLineItem)
     expect(order_line_item.attributes).to include({ 'order_id'=>order.id,

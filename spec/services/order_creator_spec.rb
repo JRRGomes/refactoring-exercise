@@ -6,7 +6,7 @@ describe '.call' do
       user = create(:user)
       address_params = { address_1: '12 Grimmauld Place', address_2: '4 Privet Drive' }
 
-      order = CreateOrder.call(user, address_params)
+      order = OrderCreator.call(user, address_params)
 
       expect(order.class).to eq(Order)
       expect(order.attributes).to include({ 'id'=>1,

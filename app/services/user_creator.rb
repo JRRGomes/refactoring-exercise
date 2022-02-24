@@ -1,4 +1,4 @@
-class CreateUser
+class UserCreator
   def initialize(cart:, purchase_params:)
     @cart = cart
     @purchase_params = purchase_params || {}
