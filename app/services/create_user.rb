@@ -1,14 +1,15 @@
 class CreateUser
-  def initialize(cart, user_params)
+  def initialize(cart, purchase_params)
     @cart = cart
-    @user_params = user_params
+    @purchase_params = purchase_params
   end
 
-  def self.call(cart, user_params)
-    new(cart, user_params).create_user
+  def self.call(cart, purchase_params)
+    new(cart, purchase_params).create_user
   end
 
   def create_user
-    @cart.user || User.create(**@user_params.merge(guest: true))
+    user_params = @purchase_params[:user] || {}
+    @cart.user || User.create(**user_params.merge(guest: true))
   end
 end
