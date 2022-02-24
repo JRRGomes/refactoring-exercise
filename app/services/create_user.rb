@@ -9,10 +9,6 @@ class CreateUser
   end
 
   def create_user
-    if @cart.user.nil?
-      User.create(**@user_params.merge(guest: true))
-    else
-      @cart.user
-    end
+    @cart.user || User.create(**@user_params.merge(guest: true))
   end
 end
