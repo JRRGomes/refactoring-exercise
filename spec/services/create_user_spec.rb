@@ -16,4 +16,16 @@ describe ".call" do
         )
     end
   end
+
+  context 'when the cart has a user' do
+    it 'return the cart user' do
+      cart_user = create(:user)
+      cart = create(:cart, user: cart_user)
+
+      user = CreateUser.call(cart: cart, purchase_params: {})
+
+      expect(user.class).to eq(User)
+      expect(user.attributes).to include(cart_user.attributes)
+    end
+  end
 end
