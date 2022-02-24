@@ -1,18 +1,19 @@
 require 'rails_helper'
 
 describe ".call" do
-  it "creates user guest" do
-    user_params = create(:user, guest: true)
-    cart = create(:cart, user: user_params)
-
-    user = CreateUser.call(cart, user_params)
-
-    expect(user.class).to eq(User)
-    expect(user.attributes).to include({ "id"=>1,
-                                         "email"=>"user@spec.io",
-                                         "first_name"=>"John",
-                                         "last_name"=>"Doe",
-                                         "guest"=>true }
-                                       )
+  context 'when the cart does not has a user' do
+    it "creates user guest" do
+      cart = create(:cart, user: nil)
+      user_params = { 'email'=>'teste@spec.io', 'first_name'=>'John', 'last_name'=>'Doe'}
+      
+      user = CreateUser.call(cart: cart, purchase_params: { user: user_params })
+      
+      expect(user.class).to eq(User)
+      expect(user.attributes).to include({ 'email'=>'teste@spec.io',
+        'first_name'=>'John',
+        'last_name'=>'Doe',
+        'guest'=>true }
+        )
+    end
   end
 end

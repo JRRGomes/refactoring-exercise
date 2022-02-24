@@ -1,11 +1,11 @@
 class CreateUser
-  def initialize(cart, purchase_params)
+  def initialize(cart:, purchase_params:)
     @cart = cart
-    @purchase_params = purchase_params
+    @purchase_params = purchase_params || {}
   end
 
-  def self.call(cart, purchase_params)
-    new(cart, purchase_params).create_user
+  def self.call(cart:, purchase_params:)
+    new(cart: cart, purchase_params: purchase_params).create_user
   end
 
   def create_user
