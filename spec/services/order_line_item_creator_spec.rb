@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe '.call' do
+  let(:order) { create(:order) }
+  let(:cart) { create(:cart, user: order.user) }
+  let(:item) { create(:cart_item, cart: cart) }
   it 'create order line item with the order, item and shipping_costs attributes' do
-    order = create(:order)
-    cart = create(:cart, user: order.user)
-    item = create(:cart_item, cart: cart)
     shipping_costs = 100
 
     order_line_item  = OrderLineItemCreator.call(order, item, shipping_costs)
