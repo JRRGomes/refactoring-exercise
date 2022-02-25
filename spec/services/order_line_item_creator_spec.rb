@@ -9,7 +9,6 @@ describe '.call' do
 
     order_line_item  = OrderLineItemCreator.call(order, item, shipping_costs)
 
-    expect(order_line_item.class).to eq(OrderLineItem)
     expect(order_line_item.attributes).to include({ 'order_id' => order.id,
       'sale_id' => item.sale.id,
       'unit_price_cents' => item.sale.unit_price_cents,

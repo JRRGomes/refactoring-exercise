@@ -8,7 +8,6 @@ describe '.call' do
 
       order = OrderCreator.call(user, address_params)
 
-      expect(order.class).to eq(Order)
       expect(order.attributes).to include({ 'id' => 1,
         'user_id' => 1,
         'first_name' => user.first_name,

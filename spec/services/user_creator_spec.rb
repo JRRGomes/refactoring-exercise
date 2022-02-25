@@ -8,7 +8,6 @@ describe ".call" do
       
       user = UserCreator.call(cart: cart, purchase_params: { user: user_params })
 
-      expect(user.class).to eq(User)
       expect(user.attributes).to include({ 'email' => 'user@spec.io',
         'first_name' => 'John',
         'last_name' => 'Doe',
@@ -24,7 +23,6 @@ describe ".call" do
 
       user = UserCreator.call(cart: cart, purchase_params: {})
 
-      expect(user.class).to eq(User)
       expect(user.attributes).to include(cart_user.attributes)
     end
   end
