@@ -3,8 +3,8 @@ require 'rails_helper'
 describe ".call" do
   context 'when the cart does not has a user' do
     let(:cart) { create(:cart, user: nil) }
+    let(:user_params) { { 'email' => 'user@spec.io', 'first_name' => 'John', 'last_name' => 'Doe' } }
     it "creates user guest" do
-      user_params = { 'email' => 'user@spec.io', 'first_name' => 'John', 'last_name' => 'Doe' }
       
       user = UserCreator.call(cart: cart, purchase_params: { user: user_params })
 
