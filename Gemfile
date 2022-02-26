@@ -13,6 +13,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   gem 'rspec-rails', '~> 5.0.0'
   gem 'pry', '~> 0.14.1'
+  gem 'rubocop-rails'
 end
 
 group :development do
